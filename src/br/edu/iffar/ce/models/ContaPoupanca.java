@@ -1,10 +1,15 @@
 package br.edu.iffar.ce.models;
 
 import java.text.MessageFormat;
+import java.time.LocalDateTime;
+
+import br.edu.iffar.ce.Util;
 
 public class ContaPoupanca extends ContaImp{
 	
 	public static final String MSG_CONTA_POUPANCA = "O saldo de {0}, Conta poupança n° {1}, Saldo: {2,number,currency}\n";
+	
+	protected LocalDateTime ultimaAtualizacao = LocalDateTime.now();
 
 	public ContaPoupanca(String nome) {
 		super.nome = nome;
@@ -15,6 +20,7 @@ public class ContaPoupanca extends ContaImp{
 	}
 	
 	public void mostrarSaldo() {
+		this.atualizarSaldo();
 		super.mostrarSaldo(MessageFormat.format(MSG_CONTA_POUPANCA, this.nome,this.id,this.saldo));
 	}
 	
@@ -22,7 +28,18 @@ public class ContaPoupanca extends ContaImp{
 		super.depositar(valor * 1.1f);
 	}
 	
+	
 	public void mostrarTipo() {
 		System.out.println(this.getClass().getSimpleName());
+	}
+	
+	public void atualizarSaldo() {
+		int segundos = Util.diferenca(ultimaAtualizacao);
+		this.ultimaAtualizacao = LocalDateTime.now();
+		this.saldo = this.saldo * (1 + 0.1f * segundos);
+	}
+
+	public String getTipo() {
+		return this.getClass().getSimpleName();
 	}
 }

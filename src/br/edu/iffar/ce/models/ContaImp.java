@@ -1,12 +1,13 @@
 package br.edu.iffar.ce.models;
 
+import java.time.LocalDateTime;
+
 public abstract class ContaImp implements Conta,Comparable<ContaImp> {
 	private static int sequencial;
 
-	protected int id;
+	protected Integer id;
 	protected float saldo;
 	protected String nome;
-
 	
 	public ContaImp() {
 		this.id = ContaImp.getSequencial();
@@ -17,7 +18,7 @@ public abstract class ContaImp implements Conta,Comparable<ContaImp> {
 		this.nome = nome;
 	}
 
-	public static synchronized int getSequencial() {
+	public static int getSequencial() {
 		return ++sequencial;
 	}
 
@@ -45,16 +46,12 @@ public abstract class ContaImp implements Conta,Comparable<ContaImp> {
 	public void mostrarSaldo(String msg) {
 		System.out.println(msg);
 	}
+
+	public int compareTo(ContaImp o) {
+		return this.id.compareTo(o.id);
+	}
 	
 	public abstract void mostrarTipo();
 	
-	public int compareTo(ContaImp o) {
-		if(this.id>0) {
-			return 1;
-		}
-		if(this.id<0) {
-			return 1;
-		}
-		return 0;
-	}
+	public abstract String getTipo();
 }

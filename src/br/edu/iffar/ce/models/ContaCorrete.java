@@ -21,4 +21,8 @@ public class ContaCorrete extends ContaImp{
 	public void mostrarTipo() {
 		System.out.println(this.getClass().getSimpleName());
 	}
+	
+	public String getTipo() {
+		return this.getClass().getSimpleName();
+	}
 }
