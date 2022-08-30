@@ -26,13 +26,5 @@ public class Main {
 		c4.sacar(10);
 		c4.mostrarSaldo();
 		c4.mostrarTipo();
-		
-		ArrayList<String> l = new ArrayList<>();
-		
-		for(long q = 0;;q ++) {
-			l.add(q + "" +q);
-		}
-		
 	}
-
 }
