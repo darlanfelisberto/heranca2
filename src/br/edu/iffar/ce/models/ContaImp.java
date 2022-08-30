@@ -1,14 +1,20 @@
+package br.edu.iffar.ce.models;
 
-public class ContaImp implements Conta,Comparable<ContaImp> {
+public abstract class ContaImp implements Conta,Comparable<ContaImp> {
 	private static int sequencial;
 
-	private int id;
-	private float saldo;
-	private String nome;
-	private String tipo;
+	protected int id;
+	protected float saldo;
+	protected String nome;
 
+	
 	public ContaImp() {
 		this.id = ContaImp.getSequencial();
+	}
+	
+	public ContaImp(String nome) {
+		this();
+		this.nome = nome;
 	}
 
 	public static synchronized int getSequencial() {
@@ -33,21 +39,15 @@ public class ContaImp implements Conta,Comparable<ContaImp> {
 	}
 
 	public void mostrarSaldo() {
-		System.out.println("A conta n° " + this.id + ", Saldo: " + this.saldo);
+		this.mostrarSaldo("A conta n° " + this.id + ", Saldo: " + this.saldo);
 	}
 	
-	public void mostraTipo() {
-		System.out.println("Tipo " + this.tipo);
-	}
-
-	public String getTipo() {
-		return tipo;
+	public void mostrarSaldo(String msg) {
+		System.out.println(msg);
 	}
 	
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
+	public abstract void mostrarTipo();
+	
 	public int compareTo(ContaImp o) {
 		if(this.id>0) {
 			return 1;

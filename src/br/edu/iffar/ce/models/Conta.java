@@ -1,3 +1,4 @@
+package br.edu.iffar.ce.models;
 
 public interface Conta {
 	public boolean sacar(float valor);
@@ -6,6 +7,4 @@ public interface Conta {
 	
 	public void mostrarSaldo();
 	
-	public void mostraTipo();
-		
 }
