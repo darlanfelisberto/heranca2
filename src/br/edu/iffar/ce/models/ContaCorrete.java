@@ -2,7 +2,7 @@ package br.edu.iffar.ce.models;
 
 import java.text.MessageFormat;
 
-public class ContaCorrete extends ContaImp{
+public class ContaCorrete extends Conta{
 
 	public static final String MSG_CONTA_POUPANCA = "O saldo de {0}, Conta Corrente n° {1}, Saldo: {2,number,currency}\n";
 	

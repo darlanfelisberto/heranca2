@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 import br.edu.iffar.ce.Util;
 
-public class ContaPoupanca extends ContaImp{
+public class ContaPoupanca extends Conta{
 	
 	public static final String MSG_CONTA_POUPANCA = "O saldo de {0}, Conta poupança n° {1}, Saldo: {2,number,currency}\n";
 	
