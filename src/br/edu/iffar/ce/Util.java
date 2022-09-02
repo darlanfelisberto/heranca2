@@ -21,8 +21,13 @@ public class Util {
 		return (int) ChronoUnit.SECONDS.between(hora,LocalDateTime.now());
 	}
 	
-	public Integer readInt() throws NumberFormatException, IOException{
+	public static Integer readInt() throws NumberFormatException, IOException{
 		BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 		return Integer.parseInt(buffer.readLine());		
+	}
+	
+	public static String readString() throws IOException {
+		BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+		return buffer.readLine();		
 	}
 }

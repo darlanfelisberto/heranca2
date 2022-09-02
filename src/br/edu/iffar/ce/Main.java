@@ -1,30 +1,41 @@
 package br.edu.iffar.ce;
 import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.iffar.ce.models.ContaCorrete;
+import br.edu.iffar.ce.models.CaixaEletronico;
 import br.edu.iffar.ce.models.Conta;
 import br.edu.iffar.ce.models.ContaPoupanca;
+import br.edu.iffar.ce.models.Titular;
 
 public class Main {
 	
 	public static void main(String [] a) {
-		Conta c = new ContaPoupanca("Malaquias");
-		c.depositar(500);
-		c.mostrarSaldo();
+		CaixaEletronico ce = new CaixaEletronico();
 		
-		Conta c2 = new ContaCorrete("Magda");
-		c2.depositar(400);
-		c2.mostrarSaldo();
+		ce.addTitular(
+				new Titular("malaquias", "74125896300")
+				.addConta(new ContaCorrete())
+				.addConta(new ContaPoupanca())
+		);
 		
-		Conta c3 = new ContaPoupanca("Julia");
-		c3.depositar(300);
-		c3.mostrarSaldo();
-		c3.mostrarTipo();
+		ce.addTitular(
+				new Titular("Magda", "58741236900")
+				.addConta(new ContaCorrete())
+				.addConta(new ContaPoupanca())
+		);
+		ce.addTitular(
+				new Titular("Shalon", "89745632100")
+				.addConta(new ContaCorrete())
+				.addConta(new ContaPoupanca())
+		);
+		ce.addTitular(
+				new Titular("Julia", "8523654")
+				.addConta(new ContaCorrete())
+				.addConta(new ContaPoupanca())
+		);
 		
-		Conta c4 = new ContaCorrete("Shalom");
-		c4.depositar(200);
-		c4.sacar(10);
-		c4.mostrarSaldo();
-		c4.mostrarTipo();
+		
+		ce.init();
 	}
 }

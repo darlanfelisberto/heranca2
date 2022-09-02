@@ -1,28 +1,26 @@
 package br.edu.iffar.ce.models;
 
-import java.time.LocalDateTime;
+import br.edu.iffar.ce.excecoes.SaldoInsuficienteException;
 
-public abstract class Conta implements InterfaceConta,Comparable<Conta> {
+public abstract class Conta implements Comparable<Conta> {
 	private static int sequencial;
 
 	protected Integer id;
 	protected float saldo;
-	protected String nome;
 	
 	public Conta() {
 		this.id = Conta.getSequencial();
-	}
-	
-	public Conta(String nome) {
-		this();
-		this.nome = nome;
 	}
 
 	public static int getSequencial() {
 		return ++sequencial;
 	}
 
-	public boolean sacar(float valor) {
+	public boolean sacar(float valor) throws SaldoInsuficienteException{
+		if(this.saldo < valor) {
+			throw new SaldoInsuficienteException();
+		}
+		
 		this.saldo -= valor;
 		return true;
 	}
@@ -30,15 +28,7 @@ public abstract class Conta implements InterfaceConta,Comparable<Conta> {
 	public void depositar(float valor) {
 		this.saldo = saldo + valor;
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
+	
 	public void mostrarSaldo() {
 		this.mostrarSaldo("A conta n° " + this.id + ", Saldo: " + this.saldo);
 	}

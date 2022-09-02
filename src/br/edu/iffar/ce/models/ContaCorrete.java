@@ -4,10 +4,10 @@ import java.text.MessageFormat;
 
 public class ContaCorrete extends Conta{
 
-	public static final String MSG_CONTA_POUPANCA = "O saldo de {0}, Conta Corrente n° {1}, Saldo: {2,number,currency}\n";
+	public static final String MSG_CONTA_POUPANCA = "Conta Corrente n° {0}, Saldo: {1,number,currency}\n";
 	
-	public ContaCorrete(String nome) {
-		super(nome);
+	public ContaCorrete() {
+		super();
 	}
 	
 	public void mostrarConta() {
@@ -15,7 +15,7 @@ public class ContaCorrete extends Conta{
 	}
 	
 	public void mostrarSaldo() {
-		super.mostrarSaldo(MessageFormat.format(MSG_CONTA_POUPANCA, this.nome,this.id,this.saldo));
+		super.mostrarSaldo(MessageFormat.format(MSG_CONTA_POUPANCA, this.id,this.saldo));
 	}
 
 	public void mostrarTipo() {
